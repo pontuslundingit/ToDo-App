@@ -1,0 +1,33 @@
+.form {
+    display: flex;
+    gap: 10px;
+}
+.input {
+    flex: 1;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: linear-gradient(to right, #4851ff, #3003f8);
+    color: white;
+    
+}
+.button {
+    background: linear-gradient(to right, #4851ff, #3003f8);
+    background-size: 200% 100%;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: transform 0.3s ease-in;
+    transition: background-position 0.3s ease;
+    
+}
+.button:hover {
+    background-position: -100% 0;
+    transform: scale(1.05);
+}
