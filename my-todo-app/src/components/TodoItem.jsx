@@ -10,16 +10,14 @@ function TodoItem({ todo, toggleTodo, deleteTodo, editTodo, color }) {
 
   const handleEdit = () => {
     if (isEditing) {
-      // Om texten inte är tom, spara ändringen och uppdatera den senaste giltiga texten
       if (newText.trim() !== "") {
         editTodo(todo.id, newText);
-        setLastValidText(newText); // Uppdatera senaste giltiga texten
+        setLastValidText(newText);
       } else {
-        // Återställ till senaste giltiga text om den nuvarande texten är tom
         setNewText(lastValidText);
       }
     }
-    setIsEditing(!isEditing); // Växla redigeringsläge
+    setIsEditing(!isEditing);
   };
 
   const handleChange = (e) => {
@@ -36,34 +34,33 @@ function TodoItem({ todo, toggleTodo, deleteTodo, editTodo, color }) {
     if (e.key === "Enter") {
       if (newText.trim() !== "") {
         editTodo(todo.id, newText);
-        setLastValidText(newText); // Uppdatera senaste giltiga texten
+        setLastValidText(newText);
       } else {
-        setNewText(lastValidText); // Återställ till senaste giltiga text om den nuvarande texten är tom
+        setNewText(lastValidText);
       }
       setIsEditing(false);
     }
   };
 
   const handleChangeButtonClick = () => {
-    // Kolla om texten är tom och återställ den i så fall till senaste giltiga text
     if (newText.trim() === "") {
-      setNewText(lastValidText); // Återställ till senaste giltiga text
+      setNewText(lastValidText);
     } else {
       editTodo(todo.id, newText);
-      setLastValidText(newText); // Uppdatera senaste giltiga texten
+      setLastValidText(newText);
     }
-    setIsEditing(false); // Växla ut ur redigeringsläge
+    setIsEditing(false);
   };
 
 
   const handleSave = () => {
     if (newText.trim() !== "") {
-      editTodo(todo.id, newText); // Spara den nya texten
-      setLastValidText(newText); // Uppdatera senaste giltiga texten
+      editTodo(todo.id, newText);
+      setLastValidText(newText);
     } else {
-      setNewText(lastValidText); // Återställ till senaste giltiga text om den nuvarande texten är tom
+      setNewText(lastValidText);
     }
-    setIsEditing(false); // Stäng redigeringsläge
+    setIsEditing(false);
   };
   
   return (
@@ -79,7 +76,7 @@ function TodoItem({ todo, toggleTodo, deleteTodo, editTodo, color }) {
               type="text"
               value={newText}
               onChange={handleChange}
-              onKeyDown={handleKeyDown} // Lägg till eventlyssnare för Enter
+              onKeyDown={handleKeyDown}
               autoFocus
               onBlur={() => handleSave()}
               
@@ -103,8 +100,8 @@ function TodoItem({ todo, toggleTodo, deleteTodo, editTodo, color }) {
         <FaTrash
           className={`deleteButton ${styles.deleteIcon}`}
           onClick={(e) => {
-            e.stopPropagation(); // Förhindra att delete triggar completed-funktionen
-            deleteTodo(todo.id); // Radera ToDo:n
+            e.stopPropagation();
+            deleteTodo(todo.id);
           }}
         />
       </div>
