@@ -43,7 +43,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         run: |
-          npx gh-pages -d build --repo https://${{ secrets.MY_PAT_TOKEN }}@github.com/${{ github.repository }}.git
+          npx gh-pages -d dist --repo https://${{ secrets.MY_PAT_TOKEN }}@github.com/${{ github.repository }}.git
         working-directory: my-todo-app
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PAT_TOKEN }}
