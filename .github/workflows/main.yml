@@ -19,7 +19,10 @@ jobs:
           node-version: 'v20.18.0'
       
       - name: Install Git
-        run: sudo apt-get install git
+        run: |
+          sudo apt-get update
+          sudo apt-get install git
+          git --version
 
       - name: Upgrade npm
         run: npm install -g npm@latest
