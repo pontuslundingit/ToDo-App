@@ -36,14 +36,13 @@ jobs:
 
       - name: Set up Git configuration
         run: |
-          git config --global user.email "${{ secrets.USER_EMAIL_EMAIL }}"
+          git config --global user.email "${{ secrets.USER_EMAIL }}"
           git config --global user.name "${{ secrets.USER_NAME }}"
-          git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
         working-directory: my-todo-app
 
       - name: Deploy to GitHub Pages
         run: |
-          npx gh-pages -d dist --repo https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          npx gh-pages -d dist --repo https://${{ secrets.MY_PAT_TOKEN }}@github.com/${{ github.repository }}.git
         working-directory: my-todo-app
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_PAT_TOKEN }}
