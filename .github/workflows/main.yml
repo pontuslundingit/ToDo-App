@@ -38,6 +38,7 @@ jobs:
         run: |
           git config --global user.email "${{ secrets.USER_EMAIL_EMAIL }}"
           git config --global user.name "${{ secrets.USER_NAME }}"
+          git config --global url."https://${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
         working-directory: my-todo-app
 
       - name: Deploy to GitHub Pages
