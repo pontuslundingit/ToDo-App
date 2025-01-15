@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist', // Specifiera mappen för byggoutputen
-  }
+  },
+  base: '/ToDo-App/', // Lägg till detta för att säkerställa korrekt URL-baserad laddning
 })
