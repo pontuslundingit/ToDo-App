@@ -34,6 +34,12 @@ jobs:
         run: npm install gh-pages --save-dev
         working-directory: my-todo-app
 
+      - name: Set up Git configuration
+        run: |
+          git config --global user.email "${{ secrets.USER_EMAIL_EMAIL }}"
+          git config --global user.name "${{ secrets.USER_NAME }}"
+        working-directory: my-todo-app
+
       - name: Deploy to GitHub Pages
         run: |
           npx gh-pages -d dist --repo https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
