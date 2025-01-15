@@ -41,6 +41,13 @@ jobs:
           git config --global url."https://${{ secrets.MY_PAT_TOKEN }}@github.com/".insteadOf "https://github.com/"
         working-directory: my-todo-app
 
+      - name: Push changes to gh-pages
+        run: |
+          git add .
+          git commit -m "Deploy to gh-pages"
+          git push origin gh-pages
+        working-directory: my-todo-app
+
       - name: Deploy to GitHub Pages
         run: |
           npx gh-pages -d dist --repo https://${{ secrets.MY_PAT_TOKEN }}@github.com/${{ github.repository }}.git
